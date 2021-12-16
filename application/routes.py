@@ -5,6 +5,7 @@ import numpy as np
 from cv2 import VideoCapture
 import cv2
 import time
+import gunicorn
 
 from chatterbot.trainers import ChatterBotCorpusTrainer
 from chatterbot.trainers import ListTrainer
@@ -180,4 +181,5 @@ def video_feed():
     return Response(gen_frames(), mimetype='multipart/x-mixed-replace; boundary=frame')
 
 if __name__ == "__main__":
-    app.run(debug=True)
+    gunicorn.run(app=app, host='0.0.0.0', port=5000, log_level="info")
+    # app.run(debug=True)
