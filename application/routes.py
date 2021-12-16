@@ -4,6 +4,7 @@ import face_recognition
 import numpy as np
 from cv2 import VideoCapture
 import cv2
+import time
 
 from chatterbot.trainers import ChatterBotCorpusTrainer
 from chatterbot.trainers import ListTrainer
@@ -119,9 +120,6 @@ process_this_frame = True
 def gen_frames():  
     while True:
         success, frame = camera.read()  # read the camera frame
-        k = cv2.waitKey(1)
-        if k == 5:
-            break
         if not success:
             break
         else:
